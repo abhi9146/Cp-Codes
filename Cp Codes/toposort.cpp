@@ -6,18 +6,16 @@ bool toposort() //Returns 1 if there exists a toposort, 0 if there is a cycle
     for(int i=1;i<=n;i++)
         for(auto &it:g[i])
             indeg[it]++;
-    for(int i=1;i<=n;i++)
-    {
+
+    for(int i=1;i<=n;i++){
         if(!indeg[i])
             pq.push(i);
     }
-    while(!pq.empty())
-    {
+    while(!pq.empty()){
         int u=pq.top();
         pq.pop();
         topo.push_back(u);
-        for(auto &v:g[u])
-        {
+        for(auto &v:g[u]){
             indeg[v]--;
             if(!indeg[v])
                 pq.push(v);
